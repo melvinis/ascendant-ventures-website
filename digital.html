@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Digital Marketing — Ascendant Ventures</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--gold:#C9A84C;--gold-light:#E8C97A;--navy:#0A1628;--navy-mid:#112240;--white:#FFFFFF;--text-muted:#8A9BB5;--text-body:#CBD5E8;}
+*{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
+body{font-family:'Outfit',sans-serif;background:var(--navy);color:var(--text-body);overflow-x:hidden;}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.2rem 5%;background:rgba(10,22,40,.95);backdrop-filter:blur(12px);border-bottom:1px solid rgba(201,168,76,.15);transition:padding .3s;}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:600;color:var(--white);letter-spacing:.02em;text-decoration:none;}.nav-logo span{color:var(--gold);}
+.nav-links{display:flex;gap:2rem;list-style:none;}
+.nav-links a{font-size:.78rem;font-weight:400;letter-spacing:.12em;text-transform:uppercase;color:var(--text-body);text-decoration:none;transition:color .25s;}
+.nav-links a:hover,.nav-links a.active{color:var(--gold);}
+.nav-cta{font-size:.78rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;padding:.6rem 1.4rem;border:1px solid var(--gold);color:var(--gold);text-decoration:none;transition:all .25s;}
+.nav-cta:hover{background:var(--gold);color:var(--navy);}
+.hamburger{display:none;background:none;border:none;cursor:pointer;}
+.hamburger span{display:block;width:24px;height:1px;background:var(--white);margin:6px 0;transition:.3s;}
+.page-hero{padding:10rem 5% 5rem;background:linear-gradient(160deg,#0A1628 0%,#112240 60%,#0D1E38 100%);position:relative;overflow:hidden;}
+.page-lines{position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(rgba(201,168,76,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,.04) 1px,transparent 1px);background-size:80px 80px;}
+.page-glow{position:absolute;top:-10%;right:-5%;width:500px;height:500px;background:radial-gradient(circle,rgba(201,168,76,.07) 0%,transparent 70%);pointer-events:none;}
+.hero-content{position:relative;z-index:1;max-width:700px;}
+.eyebrow{display:inline-flex;align-items:center;gap:.75rem;font-size:.72rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:1.25rem;opacity:0;animation:fadeUp .8s .2s forwards;}
+.eyebrow::before{content:'';display:block;width:28px;height:1px;background:var(--gold);}
+h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.8rem,5.5vw,5rem);font-weight:300;line-height:1.1;color:var(--white);opacity:0;animation:fadeUp .8s .4s forwards;}
+h1 em{font-style:italic;color:var(--gold);}
+.hero-sub{font-size:1.05rem;font-weight:300;line-height:1.8;color:var(--text-body);margin-top:1.25rem;max-width:560px;opacity:0;animation:fadeUp .8s .6s forwards;}
+.section-tag{font-size:.72rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:.75rem;margin-bottom:1.25rem;}
+.section-tag::before{content:'';display:block;width:24px;height:1px;background:var(--gold);}
+h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,3.5vw,3.2rem);font-weight:300;line-height:1.15;color:var(--white);}
+h2 em{font-style:italic;color:var(--gold);}
+.btn-primary{font-size:.82rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;padding:1rem 2.4rem;background:var(--gold);color:var(--navy);text-decoration:none;display:inline-block;transition:all .25s;}
+.btn-primary:hover{background:var(--gold-light);transform:translateY(-2px);}
+
+#channels{padding:7rem 5%;background:var(--navy-mid);}
+.channels-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5px;background:rgba(201,168,76,.08);margin-top:4rem;}
+.ch-card{background:var(--navy-mid);padding:3rem 2.5rem;position:relative;overflow:hidden;transition:background .3s;}
+.ch-card:hover{background:#162a4a;}
+.ch-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:0;transition:opacity .3s;}
+.ch-card:hover::after{opacity:1;}
+.ch-icon{font-size:2rem;display:block;margin-bottom:1.25rem;}
+.ch-title{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:400;color:var(--white);margin-bottom:.75rem;}
+.ch-desc{font-size:.88rem;font-weight:300;line-height:1.8;color:var(--text-body);}
+.ch-list{list-style:none;margin-top:1.25rem;display:flex;flex-direction:column;gap:.4rem;}
+.ch-list li{font-size:.8rem;font-weight:300;color:var(--text-muted);display:flex;align-items:center;gap:.6rem;}
+.ch-list li::before{content:'';display:block;width:12px;height:1px;background:var(--gold);flex-shrink:0;}
+
+#approach{padding:7rem 5%;background:var(--navy);display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center;}
+.approach-list{list-style:none;margin-top:2rem;}
+.ap-item{padding:1.5rem 0;border-bottom:1px solid rgba(201,168,76,.1);display:flex;gap:1.25rem;align-items:flex-start;transition:.25s;cursor:default;}
+.ap-item:first-child{border-top:1px solid rgba(201,168,76,.1);}
+.ap-item:hover .ap-title{color:var(--gold);}
+.ap-num{font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--gold);font-weight:300;flex-shrink:0;padding-top:.1rem;min-width:28px;}
+.ap-title{font-size:.95rem;font-weight:500;color:var(--white);margin-bottom:.4rem;transition:color .25s;}
+.ap-desc{font-size:.85rem;font-weight:300;line-height:1.7;color:var(--text-body);}
+.metrics-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.metric-card{background:rgba(201,168,76,.04);border:1px solid rgba(201,168,76,.12);padding:1.75rem 1.5rem;transition:all .3s;}
+.metric-card:hover{background:rgba(201,168,76,.08);border-color:rgba(201,168,76,.3);transform:translateY(-3px);}
+.metric-card:first-child{grid-column:span 2;}
+.m-val{font-family:'Cormorant Garamond',serif;font-size:2.4rem;font-weight:300;color:var(--gold);line-height:1;margin-bottom:.4rem;}
+.m-label{font-size:.78rem;font-weight:400;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted);}
+
+footer{background:var(--navy);border-top:1px solid rgba(201,168,76,.1);padding:2.5rem 5%;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1.5rem;}
+.footer-logo{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;color:var(--white);}.footer-logo span{color:var(--gold);}
+.footer-links{display:flex;gap:1.75rem;list-style:none;flex-wrap:wrap;}
+.footer-links a{font-size:.78rem;color:var(--text-muted);text-decoration:none;transition:color .25s;}.footer-links a:hover{color:var(--gold);}
+.footer-copy{font-size:.75rem;color:var(--text-muted);}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s,transform .7s;}.reveal.visible{opacity:1;transform:none;}
+@media(max-width:900px){
+  .nav-links{display:none;}.hamburger{display:block;}
+  .channels-grid,#approach,.metrics-grid{grid-template-columns:1fr;}
+  .metric-card:first-child{grid-column:span 1;}
+  footer{flex-direction:column;text-align:center;}.footer-links{justify-content:center;}
+}
+</style>
+</head>
+<body>
+<nav id="navbar">
+  <a href="index.html" class="nav-logo">Ascendant<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li>
+    <li><a href="services.html">Services</a></li><li><a href="team.html">Team</a></li>
+    <li><a href="digital.html" class="active">Digital</a></li><li><a href="events.html">Events</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <a href="contact.html" class="nav-cta">Get in Touch</a>
+  <button class="hamburger" onclick="toggleMenu(this)" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+<div id="mobile-menu" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:var(--navy);z-index:99;flex-direction:column;align-items:center;justify-content:center;gap:2rem;">
+  <a href="digital.html" onclick="closeMobileMenu()" style="font-family:'Cormorant Garamond',serif;font-size:2rem;color:var(--gold);text-decoration:none;">Digital</a>
+  <a href="events.html" onclick="closeMobileMenu()" style="font-family:'Cormorant Garamond',serif;font-size:2rem;color:var(--white);text-decoration:none;">Events</a>
+  <a href="contact.html" onclick="closeMobileMenu()" style="font-family:'Cormorant Garamond',serif;font-size:2rem;color:var(--gold);text-decoration:none;">Contact</a>
+</div>
+
+<div class="page-hero">
+  <div class="page-lines"></div><div class="page-glow"></div>
+  <div class="hero-content">
+    <div class="eyebrow">Digital Marketing</div>
+    <h1>Marketing That <em>Performs</em></h1>
+    <p class="hero-sub">In a crowded digital landscape, we help your brand cut through with precision-targeted campaigns, compelling content, and analytics that turn data into decisions.</p>
+  </div>
+</div>
+
+<section id="channels">
+  <div class="section-tag">Our Capabilities</div>
+  <h2>Full-Funnel <em>Digital Expertise</em></h2>
+  <div class="channels-grid">
+    <div class="ch-card reveal"><span class="ch-icon">🔍</span><div class="ch-title">Search Engine Optimisation</div><p class="ch-desc">Organic growth strategies that build lasting visibility across UAE and regional markets.</p><ul class="ch-list"><li>Technical SEO audits &amp; fixes</li><li>Keyword strategy &amp; content planning</li><li>Link building &amp; authority growth</li><li>Local SEO for UAE market</li></ul></div>
+    <div class="ch-card reveal"><span class="ch-icon">🎯</span><div class="ch-title">Performance Advertising</div><p class="ch-desc">Google Ads, Meta, LinkedIn and TikTok campaigns engineered for maximum ROI.</p><ul class="ch-list"><li>Campaign strategy &amp; setup</li><li>Audience targeting &amp; segmentation</li><li>Creative testing &amp; optimisation</li><li>Budget management &amp; reporting</li></ul></div>
+    <div class="ch-card reveal"><span class="ch-icon">📱</span><div class="ch-title">Social Media Management</div><p class="ch-desc">Strategy, content creation, and community management that builds real audience loyalty.</p><ul class="ch-list"><li>Content calendar &amp; strategy</li><li>Graphic design &amp; copywriting</li><li>Community management</li><li>Influencer partnerships</li></ul></div>
+    <div class="ch-card reveal"><span class="ch-icon">✍️</span><div class="ch-title">Content Marketing</div><p class="ch-desc">Compelling content that attracts, educates, and converts your ideal audience at every stage.</p><ul class="ch-list"><li>Blog &amp; article writing</li><li>Video script &amp; production briefs</li><li>Whitepapers &amp; thought leadership</li><li>Email newsletters</li></ul></div>
+    <div class="ch-card reveal"><span class="ch-icon">📧</span><div class="ch-title">Email &amp; Automation</div><p class="ch-desc">Nurture sequences and automated workflows that convert leads and retain customers at scale.</p><ul class="ch-list"><li>Drip campaign design</li><li>CRM integration &amp; setup</li><li>Segmentation &amp; personalisation</li><li>A/B testing &amp; optimisation</li></ul></div>
+    <div class="ch-card reveal"><span class="ch-icon">📊</span><div class="ch-title">Analytics &amp; Reporting</div><p class="ch-desc">Dashboards and insights that make every marketing dirham accountable and every decision evidence-based.</p><ul class="ch-list"><li>GA4 &amp; tag management setup</li><li>Custom dashboard creation</li><li>Monthly performance reports</li><li>Attribution modelling</li></ul></div>
+  </div>
+</section>
+
+<section id="approach">
+  <div class="reveal">
+    <div class="section-tag">Our Method</div>
+    <h2>Data-Led. <em>Results-Driven.</em></h2>
+    <p style="margin-top:1.25rem;font-weight:300;line-height:1.85;color:var(--text-body);">We don't run campaigns in isolation. Every digital effort is connected to your commercial objectives — with full transparency on what's working and why.</p>
+    <ul class="approach-list">
+      <li class="ap-item"><span class="ap-num">01</span><div><div class="ap-title">Audit &amp; Discovery</div><div class="ap-desc">We assess your current digital footprint, competitors, and audience before spending a single dirham.</div></div></li>
+      <li class="ap-item"><span class="ap-num">02</span><div><div class="ap-title">Strategy &amp; Planning</div><div class="ap-desc">A tailored channel mix and campaign plan aligned to your growth objectives and budget.</div></div></li>
+      <li class="ap-item"><span class="ap-num">03</span><div><div class="ap-title">Execute &amp; Test</div><div class="ap-desc">Rapid launch with continuous A/B testing to find what resonates with your audience.</div></div></li>
+      <li class="ap-item"><span class="ap-num">04</span><div><div class="ap-title">Optimise &amp; Scale</div><div class="ap-desc">Double down on what works. Eliminate what doesn't. Scale performance efficiently.</div></div></li>
+      <li class="ap-item"><span class="ap-num">05</span><div><div class="ap-title">Report &amp; Advise</div><div class="ap-desc">Clear, honest reporting with strategic recommendations — not vanity metrics.</div></div></li>
+    </ul>
+  </div>
+  <div class="metrics-grid reveal">
+    <div class="metric-card"><div class="m-val">360°</div><div class="m-label">Integrated Digital Approach</div></div>
+    <div class="metric-card"><div class="m-val">3×</div><div class="m-label">Average ROI Delivered</div></div>
+    <div class="metric-card"><div class="m-val">MENA</div><div class="m-label">Regional Market Expertise</div></div>
+    <div class="metric-card"><div class="m-val">24/7</div><div class="m-label">Campaign Monitoring</div></div>
+  </div>
+</section>
+
+<section style="padding:5rem 5%;background:var(--navy-mid);text-align:center;border-top:1px solid rgba(201,168,76,.1);">
+  <h2>Ready to Grow Your <em>Digital Presence?</em></h2>
+  <p style="font-weight:300;line-height:1.8;max-width:480px;margin:1rem auto 2.5rem;">Let's build a digital marketing strategy that actually moves the needle for your business.</p>
+  <a href="contact.html" class="btn-primary">Start a Conversation</a>
+</section>
+
+<footer>
+  <div class="footer-logo">Ascendant<span>.</span>Ventures</div>
+  <ul class="footer-links">
+    <li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li>
+    <li><a href="services.html">Services</a></li><li><a href="team.html">Team</a></li>
+    <li><a href="projects.html">Projects</a></li>
+    <li><a href="digital.html">Digital</a></li><li><a href="events.html">Events</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="footer-copy">© 2025 Ascendant Ventures AE. All rights reserved.</div>
+</footer>
+<script>
+function toggleMenu(btn){const m=document.getElementById('mobile-menu');const o=m.style.display==='flex';m.style.display=o?'none':'flex';const s=btn.querySelectorAll('span');s[0].style.transform=o?'':'translateY(7px) rotate(45deg)';s[1].style.opacity=o?'1':'0';s[2].style.transform=o?'':'translateY(-7px) rotate(-45deg)';}
+function closeMobileMenu(){document.getElementById('mobile-menu').style.display='none';}
+window.addEventListener('scroll',()=>{const n=document.getElementById('navbar');if(n)n.style.padding=window.scrollY>50?'0.8rem 5%':'1.2rem 5%';});
+const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:.08});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
